@@ -1,0 +1,14 @@
+description: The operation was executed successfully
+content:
+  application/json:
+    schema:
+      type: object
+      example:
+        ok: 1
+      required:
+        -ok
+      properties:
+        ok:
+          type: number
+          description: a number to describe that operation was successful
+          example: 1

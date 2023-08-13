@@ -1,0 +1,6 @@
+in: path
+name: Id parameter
+description: Resource unique id
+required: true
+schema:
+  $ref: './id.schema.yaml'

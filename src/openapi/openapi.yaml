@@ -1,0 +1,138 @@
+openapi: 3.0.3
+info:
+  title: Posts App API
+  description: This is API REST for posts app.
+  version: 1.0.0
+tags:
+  - name: Users
+    description: A user in the app, can have photos and create posts
+
+# ***************************************** Paths *********************************************
+paths:
+
+  /:
+    get:
+      operationId: APIInfo
+      summary: API info
+      description: Returns an object with information about API
+      responses:
+        200:
+          description: API information object
+          content:
+            application/json:
+              schema:
+                $ref: './general/api-info.schema.yaml'
+
+# **************************************************************************************
+# *                                    Users                                           *
+# **************************************************************************************
+  /users:
+    # *********************** Get all Users ***********************
+    get:
+      operationId: GetAllUsers
+      summary: Get all users
+      description: Get all users by pages up to 20 users
+      tags:
+        - Users
+      responses:
+        200:
+          description: A page with up to 20 items have been retrieved
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: './general/paginated-data.schema.yaml'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: './users/user.schema.yaml'
+        default:
+          $ref: './general/default.response.yaml'
+
+    # *********************** Create one user ***********************
+    post:
+      operationId: CreateUser
+      summary: Create user
+      description: Create a user
+      tags:
+        - Users
+      requestBody:
+        description: Data to create a user
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './users/create-user-dto.schema.yaml'
+      responses:
+        201:
+          description: User Created
+          content:
+            application/json:
+              schema:
+                $ref: './users/user.schema.yaml'
+        default:
+          $ref: './general/default.response.yaml'
+
+    # *********************** Create or Update one user ***********************
+    put:
+      operationId: UpdateCreateUser
+      summary: Create or update a user
+      description: Create or update a user with all its data
+      tags:
+        - Users
+      requestBody:
+        description: Data to update a user or create it
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './users/user.schema.yaml'
+      responses:
+        200:
+          description: User updated or created
+          content:
+            application/json:
+              schema:
+                $ref: './users/user.schema.yaml'
+        default:
+          $ref: './users/user.schema.yaml'
+
+
+  # *********************** Get one user by id ***********************
+  /users/{id}:
+    get:
+      operationId: GetOneUserById
+      summary: Get one user by id
+      description: Get just user by its id
+      tags:
+        - Users
+      parameters:
+        - $ref: './general/id-path.parameter.yaml'
+
+      responses:
+        200:
+          description: One user retrieved
+          content:
+            application/json:
+              schema:
+                $ref: './users/user.schema.yaml'
+        default:
+          $ref: './general/default.response.yaml'
+
+
+    # *********************** Delete one user by id ***********************
+    delete:
+      operationId: DeleteOneById
+      summary: Delete one by id
+      description: Delete one user by its unique id
+      tags:
+        - Users
+      parameters:
+        - $ref: './general/id-path.parameter.yaml'
+      responses:
+        200:
+          $ref: './general/ok.response.yaml'
+        default:
+          $ref: './general/default.response.yaml'

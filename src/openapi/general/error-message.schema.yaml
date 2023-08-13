@@ -1,0 +1,17 @@
+description: An error response message
+example:
+  statusCode: 500
+  message: Server internal error
+type: object
+required:
+  - statusCode
+  - message
+properties:
+  statusCode:
+    description: HTTP error status code
+    type: integer
+    example: 500
+  message:
+    description: Description of error
+    type: string
+    example: Server internal error

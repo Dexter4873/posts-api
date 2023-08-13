@@ -1,0 +1,21 @@
+type: object
+title: API info object
+description: An informative object with data about API
+default:
+  name: Post App API
+  description: The post app API
+  version: 1
+required:
+  - name
+  - description
+  - version
+properties:
+  name:
+    type: string
+    description: API name
+  description:
+    type: string
+    description: A brief description about the API
+  version:
+    type: integer
+    description: API version

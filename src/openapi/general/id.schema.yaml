@@ -1,0 +1,5 @@
+title: Id
+type: integer
+description: A positive integer to uniquely identify a resource
+example: 134
+minimum: 0

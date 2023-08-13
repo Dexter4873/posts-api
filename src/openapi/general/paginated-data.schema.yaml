@@ -1,0 +1,25 @@
+type: object
+description: A page with a set of results
+example:
+  prev: 2
+  page: 3
+  next: 4
+  data:
+    - id: 123
+      username: user12
+      email: email@example.com
+      birthday: 2001-08-30
+required:
+  - page
+  - next
+  - prev
+properties:
+  page:
+    type: integer
+    description: actual results page
+  next:
+    type: integer
+    description: Next page
+  prev:
+    type: integer
+    description: Previous page

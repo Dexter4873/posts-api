@@ -1,0 +1,17 @@
+type: object
+title: User
+description: A user in the app
+example:
+  id: 134
+  username: user34_3
+  email: email@example.com
+  name: Hector López
+  birthday: 2001-01-04
+required:
+  - id
+allOf:
+  - schema:
+    properties:
+      id:
+        $ref: '../general/id.schema.yaml'
+  - $ref: 'create-user-dto.schema.yaml'
