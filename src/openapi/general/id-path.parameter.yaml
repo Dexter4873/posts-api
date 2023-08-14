@@ -1,5 +1,5 @@
 in: path
-name: Id parameter
+name: id
 description: Resource unique id
 required: true
 schema:

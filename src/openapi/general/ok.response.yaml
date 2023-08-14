@@ -6,7 +6,7 @@ content:
       example:
         ok: 1
       required:
-        -ok
+        - ok
       properties:
         ok:
           type: number

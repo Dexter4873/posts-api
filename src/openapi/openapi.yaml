@@ -89,6 +89,8 @@ paths:
       description: Update a user with all its data or a portion of its data
       tags:
         - Users
+      parameters:
+        - $ref: './general/id-path.parameter.yaml'
       requestBody:
         description: Data to update a user
         required: true
