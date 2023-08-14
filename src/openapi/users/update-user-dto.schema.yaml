@@ -1,0 +1,29 @@
+type: object
+title: Update user dto
+descriptions: Data to update a new user
+example:
+  username: dexter34
+  email: email_34@example.com
+  name: Hector López
+  birthday: 1999-11-1
+properties:
+  username:
+    type: string
+    description: A unique identifier for user
+    example: user_3478
+  email:
+    type: string
+    format: email
+    description: Unique user email
+    example: email_name@example.com
+  name:
+    type: string
+    description: User full name
+    min-length: 1
+    max-length: 256
+    example: Hector López
+  birthday:
+    type: string
+    format: date
+    description: User birthdate
+    example: 1998-1016
