@@ -72,18 +72,21 @@ paths:
             application/json:
               schema:
                 $ref: './users/user.schema.yaml'
+        400:
+          $ref: './general/bad-request.response.yaml'
         default:
           $ref: './general/default.response.yaml'
 
-    # *********************** Create or Update one user ***********************
-    put:
-      operationId: UpdateCreateUser
-      summary: Create or update a user
-      description: Create or update a user with all its data
+  /users/{id}:
+    # *********************** Update one user by id ***********************
+    patch:
+      operationId: UpdateUser
+      summary: Update a user
+      description: Update a user with all its data or a portion of its data
       tags:
         - Users
       requestBody:
-        description: Data to update a user or create it
+        description: Data to update a user
         required: true
         content:
           application/json:
@@ -96,12 +99,13 @@ paths:
             application/json:
               schema:
                 $ref: './users/user.schema.yaml'
+        400:
+          $ref: './general/bad-request.response.yaml'
+        404:
+          $ref: './general/not-found.response.yaml'
         default:
           $ref: './users/user.schema.yaml'
-
-
-  # *********************** Get one user by id ***********************
-  /users/{id}:
+    # *********************** Get one user by id ***********************
     get:
       operationId: GetOneUserById
       summary: Get one user by id
@@ -118,6 +122,8 @@ paths:
             application/json:
               schema:
                 $ref: './users/user.schema.yaml'
+        404:
+          $ref: './general/not-found.response.yaml'
         default:
           $ref: './general/default.response.yaml'
 
@@ -134,5 +140,7 @@ paths:
       responses:
         200:
           $ref: './general/ok.response.yaml'
+        404:
+          $ref: './general/not-found.response.yaml'
         default:
           $ref: './general/default.response.yaml'

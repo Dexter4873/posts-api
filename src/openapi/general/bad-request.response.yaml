@@ -1,0 +1,5 @@
+description: The request is invalid
+content:
+  application/json:
+    schema:
+      $ref: './error-message.schema.yaml'
