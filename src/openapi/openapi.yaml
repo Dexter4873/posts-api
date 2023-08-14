@@ -4,6 +4,8 @@ info:
   description: This is API REST for posts app.
   version: 1.0.0
 tags:
+  - name: General
+    description: General functionalities for the API
   - name: Users
     description: A user in the app, can have photos and create posts
 
@@ -15,6 +17,8 @@ paths:
       operationId: APIInfo
       summary: API info
       description: Returns an object with information about API
+      tags:
+        - General
       responses:
         200:
           description: API information object
